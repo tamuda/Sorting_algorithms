@@ -76,7 +76,7 @@ public final class StdRandom {
     }
 
     // don't instantiate
-    private StdRandom() { }
+    StdRandom() { }
 
     /**
      * Sets the seed of the pseudorandom number generator.

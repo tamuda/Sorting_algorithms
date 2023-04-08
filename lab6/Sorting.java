@@ -59,6 +59,17 @@ public class Sorting {
         }
 
         // d contains almost sorted array
+        int[] d = b;
+        int swaps = (int)(0.1 * d.length);
+        for (int l=0; l<=swaps;l++){
+            StdRandom random = new StdRandom();
+            StdRandom random2 = new StdRandom();
+            int pos = random.uniform(d.length-1);
+            int pos2 = random2.uniform(d.length-1);
+            int temp = d[pos];
+            d[pos] = d[pos2];
+            d[pos2] = temp;
+        }
         //(You can copy b to a and then perform (0.1 * d.length)  many swaps to acheive this.   
        
         //TODO: 
@@ -88,7 +99,48 @@ public class Sorting {
          // StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, arrayUsed, time, timeStamp, netID, args[0]);
           // Write the resultant array to a file (Each time you run a program 4 output files should be generated. (one for each a,b,c, and d)
 		
-  } 
+  }
+
+  //Bubble sort
+    public int[] bubble_sort(int[] array){
+        int length = array.length;
+        boolean swapped = true;
+        while (swapped){
+            swapped= false;
+            for (int i=0; i<=length-1;i++){
+                if (array[i]>array[i+1]){
+                        int temp = array[i];
+                        array[i] = array[i+1];
+                        array[i+1] = temp;
+                        swapped = true;
+                }
+            }
+            length--;
+        }
+
+        return array;
+    }
+
+    //selection sort
+    public int[] selection_sort(int[] array) {
+        int length = array.length;
+        for (int j = 0; j < length - 1; j++) {
+            int minIndex = j;
+            for (int i = j + 1; i < length; i++) {
+                if (array[i] < array[minIndex]) {
+                    minIndex = i;
+                }
+            }
+            if (minIndex != j) {
+                int temp = array[j];
+                array[j] = array[minIndex];
+                array[minIndex] = temp;
+            }
+        }
+        return array;
+    }
+
+
 } 
 
 
