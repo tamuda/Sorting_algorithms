@@ -17,6 +17,7 @@
  *  % java Sorting 2Kints.txt  2
  *
  ******************************************************************************/
+import java.awt.desktop.QuitEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.*;
@@ -139,6 +140,49 @@ public class Sorting {
         }
         return array;
     }
+
+    //insertion sort
+    public int[] insertion_sort(int[] array){
+        int length = array.length;
+
+
+
+        return array;
+    }
+
+    //quick sort
+    public int[] quick_sort(int[] array, int low, int high) {
+        if (low > high) {
+            return array;
+        }
+        int mid = low + (high - low) / 2;
+        int pivot = array[mid];
+        int i = low;
+        int j = high;
+        while (i <= j) {
+            while (array[i] < pivot) {
+                i++;
+            }
+            while (array[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                i++;
+                j--;
+            }
+        }
+        if (low < j) {
+            quick_sort(array, low, j);
+        }
+        if (i < high) {
+            quick_sort(array, i, high);
+        }
+        return array;
+    }
+
 
 
 } 
