@@ -38,14 +38,10 @@ public class Sorting {
      * @param args the command-line arguments
      */
     public static void main(String[] args)  { 
-        In in = new In("1Kints.txt");
+        In in = new In(args[0]);
         
 		  // Storing file input in an array
         int[] a = in.readAllInts();
-
-
-
-
         // TODO: Generate 3 other arrays, b, c, d where
         // b contains sorted integers from a (You can use Java Arrays.sort() method)
         int[] b = a;
@@ -83,7 +79,52 @@ public class Sorting {
         //  * 5 = Quicksort
         //  Perform sorting on a,b,c,d. Pring runtime for each case along with timestamp and record those. 
         // For runtime and priting, you can use the same code from Lab 4 as follows:
-        
+        int algorithm= Integer.parseInt(args[1]);
+        //Switch statement to select the sorting algorithm
+        switch (algorithm){
+            case 0:
+                Arrays.sort(a);
+                Arrays.sort(b);
+                Arrays.sort(c);
+                Arrays.sort(d);
+                break;
+            case 1:
+                bubble_sort(a);
+                bubble_sort(b);
+                bubble_sort(c);
+                bubble_sort(d);
+                break;
+            case 2:
+                selection_sort(a);
+                selection_sort(b);
+                selection_sort(c);
+                selection_sort(d);
+                break;
+            case 3:
+                insertion_sort(a);
+                insertion_sort(b);
+                insertion_sort(c);
+                insertion_sort(d);
+                break;
+            case 4:
+                mergesort(a);
+                mergesort(b);
+                mergesort(c);
+                mergesort(d);
+                break;
+            case 5:
+                quick_sort(a,0,a.length-1);
+                quick_sort(b,0,b.length-1);
+                quick_sort(c,0,c.length-1);
+                quick_sort(d,0,d.length-1);
+                break;
+            default:
+                Arrays.sort(a);
+                Arrays.sort(b);
+                Arrays.sort(c);
+                Arrays.sort(d);
+                break;
+        }
          // TODO: For each array, a, b, c, d:  
         Stopwatch timer = new Stopwatch();
         // TODO: Perform Sorting and store the result in an  array
@@ -102,8 +143,9 @@ public class Sorting {
 		
   }
 
-  //Bubble sort
-    public int[] bubble_sort(int[] array){
+
+    //Bubble sort
+    public static int[] bubble_sort(int[] array){
         int length = array.length;
         boolean swapped = true;
         while (swapped){
@@ -123,7 +165,7 @@ public class Sorting {
     }
 
     //selection sort
-    public int[] selection_sort(int[] array) {
+    public static int[] selection_sort(int[] array) {
         int length = array.length;
         for (int j = 0; j < length - 1; j++) {
             int minIndex = j;
@@ -142,16 +184,24 @@ public class Sorting {
     }
 
     //insertion sort
-    public int[] insertion_sort(int[] array){
+    public static int[] insertion_sort(int array[]) {
         int length = array.length;
-
-
+        for (int i = 1; i < length; i++) {
+            int key = array[i];
+            int j = i - 1;
+            while (j >= 0 && array[j] > key) {
+                array[j + 1] = array[j];
+                j--;
+            }
+            array[j + 1] = key;
+        }
 
         return array;
     }
 
+
     //quick sort
-    public int[] quick_sort(int[] array, int low, int high) {
+    public static int[] quick_sort(int[] array, int low, int high) {
         if (low > high) {
             return array;
         }
@@ -183,6 +233,10 @@ public class Sorting {
         return array;
     }
 
+    //merge sort
+
+    private static void mergesort(int[] array) {
+    }
 
 
 } 
