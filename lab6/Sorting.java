@@ -107,10 +107,11 @@ public class Sorting {
                 insertion_sort(d);
                 break;
             case 4:
-                mergesort(a);
-                mergesort(b);
-                mergesort(c);
-                mergesort(d);
+                Sorting ob = new Sorting();
+                ob.sort(a, 0, a.length - 1);
+                ob.sort(b, 0, b.length - 1);
+                ob.sort(c, 0, c.length - 1);
+                ob.sort(d, 0, d.length - 1);
                 break;
             case 5:
                 quick_sort(a,0,a.length-1);
@@ -133,6 +134,7 @@ public class Sorting {
         
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
           //TODO: Replace with your own netid
+        System.out.println(timeStamp);
         String netID = "tbiswas2";
           //TODO: Replace with the algorithm used 
         String algorithmUsed = "insertion sort";
@@ -140,7 +142,6 @@ public class Sorting {
         String arrayUsed = "a";
          // StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, arrayUsed, time, timeStamp, netID, args[0]);
           // Write the resultant array to a file (Each time you run a program 4 output files should be generated. (one for each a,b,c, and d)
-		
   }
 
 
@@ -150,7 +151,7 @@ public class Sorting {
         boolean swapped = true;
         while (swapped){
             swapped= false;
-            for (int i=0; i<=length-1;i++){
+            for (int i=0; i<=length-2;i++){
                 if (array[i]>array[i+1]){
                         int temp = array[i];
                         array[i] = array[i+1];
@@ -234,11 +235,64 @@ public class Sorting {
     }
 
     //merge sort
+    private static void mergesort(int[] array, int l, int m, int r) {
+            int n1 = m - l + 1;
+            int n2 = r - m;
 
-    private static void mergesort(int[] array) {
+            // Create temp arrays
+            int L[] = new int[n1];
+            int R[] = new int[n2];
+            for (int i = 0; i < n1; ++i)
+                L[i] = array[l + i];
+            for (int j = 0; j < n2; ++j)
+                R[j] = array[m + 1 + j];
+
+            int i = 0, j = 0;
+
+            int k = l;
+            while (i < n1 && j < n2) {
+                if (L[i] <= R[j]) {
+                    array[k] = L[i];
+                    i++;
+                }
+                else {
+                    array[k] = R[j];
+                    j++;
+                }
+                k++;
+            }
+
+            while (i < n1) {
+                array[k] = L[i];
+                i++;
+                k++;
+            }
+
+            while (j < n2) {
+                array[k] = R[j];
+                j++;
+                k++;
+            }
+        }
+
+        // Main function that sorts arr l and r using merge
+        void sort(int array[], int l, int r) {
+            if (l < r) {
+                // Find the middle point
+                int m = l + (r - l) / 2;
+
+                // Sort first and second halves
+                sort(array, l, m);
+                sort(array, m + 1, r);
+
+                // Merge the sorted halves
+                mergesort(array, l, m, r);
+            }
+        }
     }
 
 
-} 
+
+
 
 
