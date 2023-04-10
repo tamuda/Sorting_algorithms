@@ -17,7 +17,6 @@
  *  % java Sorting 2Kints.txt  2
  *
  ******************************************************************************/
-import java.awt.desktop.QuitEvent;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -79,22 +78,22 @@ public class Sorting {
 
                 //sorting array a w/ time using the default
                 Stopwatch timerA = new Stopwatch();
-                Arrays.sort(a);
+                defaultSort(a);
                 timeA = timerA.elapsedTimeMillis();
 
                 //sorting array b w/ time using the default
                 Stopwatch timerB = new Stopwatch();
-                Arrays.sort(b);
+                defaultSort(b);
                 timeB = timerB.elapsedTimeMillis();
 
                 //sorting array c w/ time using the default
                 Stopwatch timerC = new Stopwatch();
-                Arrays.sort(c);
+                defaultSort(c);
                 timeC = timerC.elapsedTimeMillis();
 
                 //sorting array d w/ time using the default
                 Stopwatch timerD = new Stopwatch();
-                Arrays.sort(d);
+                defaultSort(d);
                 timeD = timerD.elapsedTimeMillis();
                 break;
             case 1:
@@ -102,22 +101,22 @@ public class Sorting {
 
                 //sorting array a w/ time using bubble sort
                 timerA = new Stopwatch();
-                bubble_sort(a);
+                bubbleSort(a);
                 timeA = timerA.elapsedTimeMillis();
 
                 //sorting array b w/ time using bubble sort
                 timerB = new Stopwatch();
-                bubble_sort(b);
+                bubbleSort(b);
                 timeB = timerB.elapsedTimeMillis();
 
                 //sorting array c w/ time using bubble sort
                 timerC = new Stopwatch();
-                bubble_sort(c);
+                bubbleSort(c);
                 timeC = timerC.elapsedTimeMillis();
 
                 //sorting array d w/ time using bubble sort
                 timerD = new Stopwatch();
-                bubble_sort(d);
+                bubbleSort(d);
                 timeD = timerD.elapsedTimeMillis();
                 break;
             case 2:
@@ -125,22 +124,22 @@ public class Sorting {
 
                 //sorting array a w/ time using selection sort
                 timerA = new Stopwatch();
-                selection_sort(a);
+                selectionSort(a);
                 timeA = timerA.elapsedTimeMillis();
 
                 //sorting array b w/ time using selection sort
                 timerB = new Stopwatch();
-                selection_sort(b);
+                selectionSort(b);
                 timeB = timerB.elapsedTimeMillis();
 
                 //sorting array c w/ time using selection sort
                 timerC = new Stopwatch();
-                selection_sort(c);
+                selectionSort(c);
                 timeC = timerC.elapsedTimeMillis();
 
                 //sorting array d w/ time using selection sort
                 timerD = new Stopwatch();
-                selection_sort(d);
+                selectionSort(d);
                 timeD = timerD.elapsedTimeMillis();
                 break;
             case 3:
@@ -148,46 +147,47 @@ public class Sorting {
 
                 //sorting array a w/ time using insertion sort
                 timerA = new Stopwatch();
-                insertion_sort(a);
+                insertionSort(a);
                 timeA = timerA.elapsedTimeMillis();
 
                 //sorting array b w/ time using insertion sort
                 timerB = new Stopwatch();
-                insertion_sort(b);
+                insertionSort(b);
                 timeB = timerB.elapsedTimeMillis();
 
                 //sorting array c w/ time using insertion sort
                 timerC = new Stopwatch();
-                insertion_sort(c);
+                insertionSort(c);
                 timeC = timerC.elapsedTimeMillis();
 
                 //sorting array d w/ time using insertion sort
                 timerD = new Stopwatch();
-                insertion_sort(d);
+                insertionSort(d);
                 timeD = timerD.elapsedTimeMillis();
                 break;
             case 4:
                 name = "merge";
-                Sorting ob = new Sorting();
+                //call merge sort
+
 
                 //sorting array a w/ time using merge sort
                 timerA = new Stopwatch();
-                ob.sort(a, 0, a.length - 1);
+               mergeSort(a);
                 timeA = timerA.elapsedTimeMillis();
 
                 //sorting array a w/ time using merge sort
                 timerB = new Stopwatch();
-                ob.sort(b, 0, a.length - 1);
+                mergeSort(b);
                 timeB = timerB.elapsedTimeMillis();
 
                 //sorting array a w/ time using merge sort
                 timerC = new Stopwatch();
-                ob.sort(c, 0, a.length - 1);
+                mergeSort(c);
                 timeC = timerC.elapsedTimeMillis();
 
                 //sorting array a w/ time using merge sort
                 timerD = new Stopwatch();
-                ob.sort(d, 0, a.length - 1);
+                mergeSort(d);
                 timeD = timerD.elapsedTimeMillis();
                 break;
             case 5:
@@ -195,22 +195,22 @@ public class Sorting {
 
                 //sorting array a w/ time using quick sort
                 timerA = new Stopwatch();
-                quick_sort(a, 0, a.length - 1);
+                quickSort(a);
                 timeA = timerA.elapsedTimeMillis();
 
                 //sorting array a w/ time using quick sort
                 timerB = new Stopwatch();
-                quick_sort(b, 0, a.length - 1);
+                quickSort(b);
                 timeB = timerB.elapsedTimeMillis();
 
                 //sorting array a w/ time using quick sort
                 timerC = new Stopwatch();
-                quick_sort(c, 0, a.length - 1);
+                quickSort(c);
                 timeC = timerC.elapsedTimeMillis();
 
                 //sorting array a w/ time using quick sort
                 timerD = new Stopwatch();
-                quick_sort(d, 0, a.length - 1);
+                quickSort(d);
                 timeD = timerD.elapsedTimeMillis();
                 break;
             default:
@@ -218,22 +218,22 @@ public class Sorting {
 
                 //sorting array a w/ time using the default
                 timerA = new Stopwatch();
-                Arrays.sort(a);
+                defaultSort(a);
                 timeA = timerA.elapsedTimeMillis();
 
                 //sorting array b w/ time using the default
                 timerB = new Stopwatch();
-                Arrays.sort(b);
+                defaultSort(b);
                 timeB = timerB.elapsedTimeMillis();
 
                 //sorting array c w/ time using the default
                 timerC = new Stopwatch();
-                Arrays.sort(c);
+                defaultSort(c);
                 timeC = timerC.elapsedTimeMillis();
 
                 //sorting array d w/ time using the default
                 timerD = new Stopwatch();
-                Arrays.sort(d);
+                defaultSort(d);
                 timeD = timerD.elapsedTimeMillis();
                 break;
         }
@@ -255,9 +255,15 @@ public class Sorting {
         saveToFile(d, "d.txt");
     }
 
+    //Default sort
+    public static int[] defaultSort(int[] array){
+        Arrays.sort(array);
+        return array;
+    }
+
 
     //Bubble sort
-    public static int[] bubble_sort(int[] array){
+    public static int[] bubbleSort(int[] array){
         int length = array.length;
         boolean swapped = true;
         while (swapped){
@@ -277,7 +283,7 @@ public class Sorting {
     }
 
     //selection sort
-    public static int[] selection_sort(int[] array) {
+    public static int[] selectionSort(int[] array) {
         int length = array.length;
         for (int j = 0; j < length - 1; j++) {
             int minIndex = j;
@@ -296,7 +302,7 @@ public class Sorting {
     }
 
     //insertion sort
-    public static int[] insertion_sort(int array[]) {
+    public static int[] insertionSort(int array[]) {
         int length = array.length;
         for (int i = 1; i < length; i++) {
             int key = array[i];
@@ -310,10 +316,13 @@ public class Sorting {
 
         return array;
     }
-
+    //quick sort caller
+    public static int[] quickSort(int[] array) {
+        return quickSort(array, 0, array.length - 1);
+    }
 
     //quick sort
-    public static int[] quick_sort(int[] array, int low, int high) {
+    public static int[] quickSort(int[] array, int low, int high) {
         if (low > high) {
             return array;
         }
@@ -337,16 +346,23 @@ public class Sorting {
             }
         }
         if (low < j) {
-            quick_sort(array, low, j);
+            quickSort(array, low, j);
         }
         if (i < high) {
-            quick_sort(array, i, high);
+            quickSort(array, i, high);
         }
         return array;
     }
 
+    //merge sort caller method
+    public static int[] mergeSort(int[] array) {
+        Sorting ob = new Sorting();
+        ob.sort(array, 0, array.length - 1);
+        return array;
+    }
+
     //merge sort
-    private static void mergesort(int[] array, int l, int m, int r) {
+    private static void mergeSort(int[] array, int l, int m, int r) {
         int n1 = m - l + 1;
         int n2 = r - m;
 
@@ -397,7 +413,8 @@ public class Sorting {
             sort(array, m + 1, r);
 
             // Merge the sorted halves
-            mergesort(array, l, m, r);
+            mergeSort(array, l, m, r);
+            mergeSort(array, l, m, r);
         }
     }
 
