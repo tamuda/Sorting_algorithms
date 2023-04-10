@@ -18,29 +18,24 @@
  *
  ******************************************************************************/
 import java.awt.desktop.QuitEvent;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.*;
 
+
+
+
 public class Sorting {
 
+    public static void main(String[] args) throws IOException {
+        System.out.println(args[0] + " " + args[1]);
 
- /**
-     * 
-     * Sorts the numbers present in the file based on the algorithm provided.
-     * 0 = Arrays.sort() (Java Default)
-     * 1 = Bubble Sort
-     * 2 = Selection Sort 
-     * 3 = Insertion Sort 
-     * 4 = Mergesort
-     * 5 = Quicksort
-     *
-     * @param args the command-line arguments
-     */
-    public static void main(String[] args)  { 
-        In in = new In(args[2]);
-        
-		  // Storing file input in an array
+        In in = new In(args[0]);
+
+        // Storing file input in an array
         int[] a = in.readAllInts();
         // TODO: Generate 3 other arrays, b, c, d where
         // b contains sorted integers from a (You can use Java Arrays.sort() method)
@@ -67,20 +62,6 @@ public class Sorting {
             d[pos] = d[pos2];
             d[pos2] = temp;
         }
-        //(You can copy b to a and then perform (0.1 * d.length)  many swaps to acheive this.   
-       
-        //TODO: 
-        // Read the second argument and based on input select the sorting algorithm
-        //  * 0 = Arrays.sort() (Java Default)
-        //  * 1 = Bubble Sort
-        //  * 2 = Selection Sort 
-        //  * 3 = Insertion Sort 
-        //  * 4 = Mergesort
-        //  * 5 = Quicksort
-        //  Perform sorting on a,b,c,d. Pring runtime for each case along with timestamp and record those. 
-        // For runtime and priting, you can use the same code from Lab 4 as follows:
-
-        // TODO: For each array, a, b, c, d:
         Stopwatch timer = new Stopwatch();
 
         double timeA = 0;
@@ -88,7 +69,7 @@ public class Sorting {
         double timeC = 0;
         double timeD = 0;
 
-        int algorithm= Integer.parseInt(args[3]);
+        int algorithm= Integer.parseInt(args[1]);
         String name = "";
         // TODO: Perform Sorting and store the result in an  array
         //Switch statement to select the sorting algorithm
@@ -258,17 +239,21 @@ public class Sorting {
         }
 
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-          //TODO: Replace with your own netid
+        //TODO: Replace with your own netid
         String netID = "32362206";
-          //TODO: Replace with the algorithm used 
+        //TODO: Replace with the algorithm used
         String algorithmUsed = name + " sort";
         //TODO: Replace with the array used
-        StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, "a", timeA, timeStamp, netID, args[2]);
-        StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, "b", timeB, timeStamp, netID, args[2]);
-        StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, "c", timeC, timeStamp, netID, args[2]);
-        StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, "d", timeD, timeStamp, netID, args[2]);
+        StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, "a", timeA, timeStamp, netID, args[0]);
+        StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, "b", timeB, timeStamp, netID, args[0]);
+        StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, "c", timeC, timeStamp, netID, args[0]);
+        StdOut.printf("%s %s %8.1f   %s  %s  %s\n", algorithmUsed, "d", timeD, timeStamp, netID, args[0]);
         // Write the resultant array to a file (Each time you run a program 4 output files should be generated. (one for each a,b,c, and d)
-  }
+        saveToFile(a, "a.txt");
+        saveToFile(b, "b.txt");
+        saveToFile(c, "c.txt");
+        saveToFile(d, "d.txt");
+    }
 
 
     //Bubble sort
@@ -279,10 +264,10 @@ public class Sorting {
             swapped= false;
             for (int i=0; i<=length-2;i++){
                 if (array[i]>array[i+1]){
-                        int temp = array[i];
-                        array[i] = array[i+1];
-                        array[i+1] = temp;
-                        swapped = true;
+                    int temp = array[i];
+                    array[i] = array[i+1];
+                    array[i+1] = temp;
+                    swapped = true;
                 }
             }
             length--;
@@ -362,60 +347,71 @@ public class Sorting {
 
     //merge sort
     private static void mergesort(int[] array, int l, int m, int r) {
-            int n1 = m - l + 1;
-            int n2 = r - m;
+        int n1 = m - l + 1;
+        int n2 = r - m;
 
-            // Create temp arrays
-            int L[] = new int[n1];
-            int R[] = new int[n2];
-            for (int i = 0; i < n1; ++i)
-                L[i] = array[l + i];
-            for (int j = 0; j < n2; ++j)
-                R[j] = array[m + 1 + j];
+        // Create temp arrays
+        int L[] = new int[n1];
+        int R[] = new int[n2];
+        for (int i = 0; i < n1; ++i)
+            L[i] = array[l + i];
+        for (int j = 0; j < n2; ++j)
+            R[j] = array[m + 1 + j];
 
-            int i = 0, j = 0;
+        int i = 0, j = 0;
 
-            int k = l;
-            while (i < n1 && j < n2) {
-                if (L[i] <= R[j]) {
-                    array[k] = L[i];
-                    i++;
-                }
-                else {
-                    array[k] = R[j];
-                    j++;
-                }
-                k++;
-            }
-
-            while (i < n1) {
+        int k = l;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
                 array[k] = L[i];
                 i++;
-                k++;
             }
-
-            while (j < n2) {
+            else {
                 array[k] = R[j];
                 j++;
-                k++;
             }
+            k++;
         }
 
-        // Main function that sorts arr l and r using merge
-        void sort(int array[], int l, int r) {
-            if (l < r) {
-                // Find the middle point
-                int m = l + (r - l) / 2;
+        while (i < n1) {
+            array[k] = L[i];
+            i++;
+            k++;
+        }
 
-                // Sort first and second halves
-                sort(array, l, m);
-                sort(array, m + 1, r);
-
-                // Merge the sorted halves
-                mergesort(array, l, m, r);
-            }
+        while (j < n2) {
+            array[k] = R[j];
+            j++;
+            k++;
         }
     }
+
+    // Main function that sorts arr l and r using merge
+    void sort(int array[], int l, int r) {
+        if (l < r) {
+            // Find the middle point
+            int m = l + (r - l) / 2;
+
+            // Sort first and second halves
+            sort(array, l, m);
+            sort(array, m + 1, r);
+
+            // Merge the sorted halves
+            mergesort(array, l, m, r);
+        }
+    }
+
+    //method to save the 4 arrays to 4 different files
+    public static void saveToFile(int[] array, String fileName) throws IOException {
+        FileWriter fileWriter = new FileWriter(fileName);
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        for (int i = 0; i < array.length; i++) {
+            printWriter.println(array[i]);
+        }
+        printWriter.close();
+    }
+
+}
 
 
 
